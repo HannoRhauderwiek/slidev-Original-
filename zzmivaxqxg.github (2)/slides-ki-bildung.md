@@ -1578,11 +1578,10 @@ transition: fade
 </style>
 
 ---
+layout: ki-scrollable
 transition: slide-up
-class: scrollable-slide
+title: Eigenes Bild einbinden
 ---
-
-# Eigenes Bild einbinden
 
 <div class="image-showcase">
   <div class="image-container">
