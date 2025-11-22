@@ -1,0 +1,27 @@
+BILDER-ANLEITUNG FÜR SLIDEV
+===========================
+
+Um eigene Bilder in Ihrer Präsentation zu verwenden:
+
+1. Speichern Sie Ihre Bilder in diesem Ordner:
+   /public/images/
+
+2. Referenzieren Sie sie in Ihren Slides so:
+   - Markdown: ![Beschreibung](/images/mein-bild.jpg)
+   - HTML: <img src="/images/mein-bild.jpg" alt="Beschreibung" />
+
+UNTERSTÜTZTE FORMATE:
+- JPG/JPEG
+- PNG
+- GIF (auch animiert!)
+- SVG
+- WebP
+
+BEISPIEL:
+Speichern Sie "beispiel-bild.png" hier ab und verwenden Sie:
+<img src="/images/beispiel-bild.png" class="custom-image" />
+
+TIPPS:
+- Optimieren Sie Bilder vor dem Upload (max. 1-2 MB empfohlen)
+- Verwenden Sie aussagekräftige Dateinamen ohne Leerzeichen
+- GIFs für Hintergründe: Achten Sie auf die Dateigröße
