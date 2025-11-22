@@ -596,3 +596,119 @@ pre {
 /* Full Width/Height */
 .w-full { width: 100%; }
 .h-full { height: 100%; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUTO-SCROLL FÜR ÜBERGROSSE INHALTE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Ermöglicht automatisches Scrollen wenn Inhalte größer als die Folie sind.
+ * Verwendung: Füge class="scrollable" zum Container hinzu
+ */
+
+/* Basis-Scrollable Container */
+.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Slidev Slide-Container scrollbar machen */
+.slidev-layout.scrollable-slide {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  padding-bottom: var(--space-16);
+}
+
+/* Automatische Scrollbarkeit für alle Folien */
+:root {
+  --slide-overflow: visible;
+}
+
+/* Globale Option: Alle Slides scrollbar machen */
+.enable-scroll-all .slidev-layout {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scrollbarer Inhalt mit Fade-Out Effekt am unteren Rand */
+.scrollable-fade {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+  position: relative;
+}
+
+.scrollable-fade::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--color-background));
+  pointer-events: none;
+}
+
+/* Dropdown/Aufklappmenü Support */
+.expandable-container {
+  position: relative;
+  overflow: visible;
+}
+
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-slow) var(--easing-smooth);
+}
+
+.expandable-content.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+/* Scrollable Accordion */
+.accordion-scrollable {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+/* Scroll-Indikator */
+.scroll-indicator-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-text-tertiary);
+  font-size: 0.75rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.scroll-indicator-bottom::after {
+  content: "↓";
+  font-size: 1.25rem;
+}

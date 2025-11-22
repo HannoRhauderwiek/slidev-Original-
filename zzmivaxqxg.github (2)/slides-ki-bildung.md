@@ -1576,3 +1576,596 @@ transition: fade
   display: inline-block;
 }
 </style>
+
+---
+transition: slide-up
+class: scrollable-slide
+---
+
+# Eigenes Bild einbinden
+
+<div class="image-showcase">
+  <div class="image-container">
+    <!--
+      ANLEITUNG: So fügen Sie Ihr eigenes Bild ein:
+
+      1. Speichern Sie Ihr Bild im Ordner: /public/images/
+      2. Ersetzen Sie den Pfad unten durch: /images/IHR-BILDNAME.jpg
+
+      Beispiel: Wenn Sie "ki-schule.png" speichern:
+      <img src="/images/ki-schule.png" alt="KI in der Schule" class="custom-image" />
+    -->
+    <div class="placeholder-image">
+      <span class="placeholder-icon">🖼️</span>
+      <p class="placeholder-text">Ihr Bild hier</p>
+      <p class="placeholder-hint">Speichern Sie Ihr Bild in:<br><code>/public/images/</code></p>
+    </div>
+
+    <!-- Kommentieren Sie das Placeholder-div aus und fügen Sie stattdessen ein: -->
+    <!-- <img src="/images/ihr-bild.jpg" alt="Bildbeschreibung" class="custom-image" /> -->
+  </div>
+
+  <div class="image-instructions">
+    <h3>📁 So fügen Sie Ihr Bild ein:</h3>
+    <ol>
+      <li>Speichern Sie Ihr Bild im Ordner <code>public/images/</code></li>
+      <li>Unterstützte Formate: <strong>JPG, PNG, GIF, SVG, WebP</strong></li>
+      <li>Ersetzen Sie den Platzhalter durch:<br>
+        <code>&lt;img src="/images/IHR-BILD.jpg" /&gt;</code>
+      </li>
+    </ol>
+
+    <div class="tip-box">
+      💡 <strong>Tipp:</strong> Optimieren Sie Bilder vor dem Upload (max. 1-2 MB)
+    </div>
+  </div>
+</div>
+
+<style>
+.image-showcase {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  height: calc(100% - 100px);
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+  border-radius: 1rem;
+  border: 2px dashed #d1d5db;
+  overflow: hidden;
+}
+
+.placeholder-image {
+  text-align: center;
+  padding: 3rem;
+}
+
+.placeholder-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.placeholder-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 0.5rem 0;
+}
+
+.placeholder-hint {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.placeholder-hint code {
+  background: #e5e7eb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.custom-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.image-instructions {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.image-instructions h3 {
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+}
+
+.image-instructions ol {
+  padding-left: 1.25rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.image-instructions ol li {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.image-instructions code {
+  background: #f3f4f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  color: #6366f1;
+}
+
+.tip-box {
+  background: linear-gradient(135deg, #fef3c7, #fef9c3);
+  border-left: 3px solid #f59e0b;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.85rem;
+}
+</style>
+
+---
+transition: fade
+---
+
+# GIF-Hintergrund mit Text
+
+<div class="gif-slide">
+  <!--
+    ANLEITUNG: GIF als Hintergrund
+
+    1. Speichern Sie Ihr GIF im Ordner: /public/images/
+    2. Ersetzen Sie die URL in background-image durch: url('/images/IHR-GIF.gif')
+
+    Beispiel für animierten Hintergrund:
+    background-image: url('/images/animation.gif');
+  -->
+
+  <div class="gif-background">
+    <!-- Platzhalter-Animation (wird durch Ihr GIF ersetzt) -->
+    <div class="animated-placeholder">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </div>
+
+  <div class="gif-content">
+    <div class="content-badge">🎬 Animierter Hintergrund</div>
+
+    <h2 class="gif-title">
+      Visualisierungen<br>
+      <span class="highlight-text">erwecken Inhalte zum Leben</span>
+    </h2>
+
+    <p class="gif-description">
+      Animierte GIFs können komplexe Prozesse veranschaulichen und die Aufmerksamkeit auf wichtige Konzepte lenken.
+    </p>
+
+    <div class="gif-features">
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <span>Prozesse visualisieren</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎯</span>
+        <span>Aufmerksamkeit lenken</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">💡</span>
+        <span>Konzepte erklären</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gif-instructions-overlay">
+    <p>📁 GIF speichern in: <code>/public/images/</code></p>
+    <p>🔗 CSS ändern: <code>background-image: url('/images/dein.gif')</code></p>
+  </div>
+</div>
+
+<style>
+.gif-slide {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gif-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  /*
+   * HIER IHR GIF EINFÜGEN:
+   * background-image: url('/images/ihr-hintergrund.gif');
+   * background-size: cover;
+   * background-position: center;
+   */
+}
+
+/* Platzhalter-Animation (entfernen wenn GIF eingefügt) */
+.animated-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='rgba(99,102,241,0.1)' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 1200px 100px;
+  animation: wave 15s linear infinite;
+}
+
+.wave:nth-child(2) {
+  bottom: 10px;
+  opacity: 0.5;
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+.wave:nth-child(3) {
+  bottom: 20px;
+  opacity: 0.3;
+  animation-delay: -10s;
+  animation-duration: 25s;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.gif-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 700px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.content-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.gif-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gif-description {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.gif-features {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.feature-icon {
+  font-size: 1.25rem;
+}
+
+.gif-instructions-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.gif-instructions-overlay p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.gif-instructions-overlay code {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+</style>
+
+---
+transition: zoom
+---
+
+# Kreis-Animation
+
+<div class="circles-animation-container">
+  <div class="animation-stage">
+    <!-- Die Kreise, die sich zusammenbewegen -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+    <div class="circle circle-4"></div>
+    <div class="circle circle-5"></div>
+    <div class="circle circle-6"></div>
+    <div class="circle circle-7"></div>
+    <div class="circle circle-8"></div>
+
+    <!-- Der finale schwarze Kreis -->
+    <div class="final-circle"></div>
+  </div>
+
+  <div class="animation-controls">
+    <button class="replay-btn" onclick="this.closest('.circles-animation-container').classList.remove('animate'); void this.offsetWidth; this.closest('.circles-animation-container').classList.add('animate');">
+      🔄 Animation wiederholen
+    </button>
+  </div>
+
+  <div class="animation-description">
+    <h3>Konvergenz der Ideen</h3>
+    <p>Verschiedene Perspektiven und Konzepte vereinen sich zu einem kohärenten Ganzen.</p>
+  </div>
+</div>
+
+<style>
+.circles-animation-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  padding: 2rem;
+}
+
+.circles-animation-container.animate .circle,
+.circles-animation-container.animate .final-circle {
+  animation-play-state: running;
+}
+
+.animation-stage {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 2rem;
+}
+
+/* Basis-Kreis-Styles */
+.circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: moveToCenter 3s ease-in-out forwards, fadeToBlack 3s ease-in-out 2.5s forwards;
+}
+
+/* Verschiedene Startpositionen und Farben */
+.circle-1 {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  top: 15%;
+  right: 5%;
+  animation-delay: 0.1s;
+}
+
+.circle-3 {
+  background: linear-gradient(135deg, #eab308, #facc15);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation-delay: 0.2s;
+}
+
+.circle-4 {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  bottom: 15%;
+  right: 5%;
+  animation-delay: 0.3s;
+}
+
+.circle-5 {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0.4s;
+}
+
+.circle-6 {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  bottom: 15%;
+  left: 5%;
+  animation-delay: 0.5s;
+}
+
+.circle-7 {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation-delay: 0.6s;
+}
+
+.circle-8 {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  top: 15%;
+  left: 5%;
+  animation-delay: 0.7s;
+}
+
+/* Animation: Bewegung zur Mitte */
+@keyframes moveToCenter {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* Animation: Zu Schwarz werden */
+@keyframes fadeToBlack {
+  0% {
+    background: inherit;
+  }
+  100% {
+    background: #1f2937;
+  }
+}
+
+/* Der finale schwarze Kreis */
+.final-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: #1f2937;
+  border-radius: 50%;
+  animation: growCircle 1s ease-out 2.5s forwards;
+  box-shadow: 0 0 0 0 rgba(31, 41, 55, 0.3);
+}
+
+@keyframes growCircle {
+  0% {
+    width: 0;
+    height: 0;
+    box-shadow: 0 0 0 0 rgba(31, 41, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 60px 30px rgba(31, 41, 55, 0.2);
+  }
+  100% {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 25px 50px -12px rgba(31, 41, 55, 0.5);
+  }
+}
+
+.animation-controls {
+  margin-bottom: 1.5rem;
+}
+
+.replay-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.replay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.replay-btn:active {
+  transform: translateY(0);
+}
+
+.animation-description {
+  text-align: center;
+  max-width: 500px;
+}
+
+.animation-description h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.animation-description p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+</style>
