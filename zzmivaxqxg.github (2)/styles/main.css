@@ -602,14 +602,18 @@ pre {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /*
- * Ermöglicht automatisches Scrollen wenn Inhalte größer als die Folie sind.
- * Verwendung: Füge class="scrollable" zum Container hinzu
+ * WICHTIG: Slidev setzt standardmäßig overflow: hidden auf Slides.
+ * Diese Regeln überschreiben das, um Scrollen zu ermöglichen.
+ *
+ * Verwendung:
+ * 1. Im Frontmatter: class: scrollable-slide
+ * 2. Oder: <div class="scrollable">...</div>
  */
 
 /* Basis-Scrollable Container */
 .scrollable {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   max-height: 100%;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
@@ -632,29 +636,69 @@ pre {
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* Slidev Slide-Container scrollbar machen */
-.slidev-layout.scrollable-slide {
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 100vh;
+/*
+ * SLIDEV SCROLL FIX - Mit hoher Spezifität
+ * Überschreibt Slidevs Standard overflow: hidden
+ */
+
+/* Slide-Container scrollbar machen - HOHE SPEZIFITÄT */
+.slidev-page .slidev-layout.scrollable-slide,
+.slidev-layout.scrollable-slide,
+[class*="slidev-layout"].scrollable-slide {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 100vh !important;
+  height: 100vh !important;
   padding-bottom: var(--space-16);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
-/* Automatische Scrollbarkeit für alle Folien */
+/* Auch den Parent-Container anpassen */
+.slidev-page:has(.scrollable-slide) {
+  overflow: visible !important;
+}
+
+/* Slide-Content Container */
+.slidev-page .slidev-layout.scrollable-slide > * {
+  max-height: none;
+}
+
+/* WebKit Scrollbar für scrollable-slide */
+.slidev-layout.scrollable-slide::-webkit-scrollbar {
+  width: 8px;
+}
+
+.slidev-layout.scrollable-slide::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.slidev-layout.scrollable-slide::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.slidev-layout.scrollable-slide::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Automatische Scrollbarkeit für alle Folien (optional) */
 :root {
   --slide-overflow: visible;
 }
 
 /* Globale Option: Alle Slides scrollbar machen */
-.enable-scroll-all .slidev-layout {
-  overflow-y: auto;
-  overflow-x: hidden;
+.enable-scroll-all .slidev-layout,
+.enable-scroll-all .slidev-page .slidev-layout {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 /* Scrollbarer Inhalt mit Fade-Out Effekt am unteren Rand */
 .scrollable-fade {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   max-height: 100%;
   position: relative;
 }
@@ -711,4 +755,27 @@ pre {
 .scroll-indicator-bottom::after {
   content: "↓";
   font-size: 1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDEV OVERFLOW FIX - Globale Überschreibung
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Diese Regeln stellen sicher, dass Slidev keine Fehlermeldung zeigt,
+ * wenn Inhalte größer als die Slide-Fläche sind.
+ */
+
+/* Entferne Slidev's strict overflow Verhalten */
+.slidev-page,
+.slidev-page > div,
+#slide-container,
+.slide-content {
+  overflow: visible;
+}
+
+/* Für Slides mit der scrollable-slide Klasse: Erlaube Scrolling */
+.slidev-page:has(.scrollable-slide),
+.slidev-page:has(.scrollable-slide) > div {
+  overflow: visible !important;
 }
