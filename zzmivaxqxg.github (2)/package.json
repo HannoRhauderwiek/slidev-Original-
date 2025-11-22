@@ -1,17 +1,25 @@
 {
   "packageManager": "pnpm@10.9.0",
-  "name": "slidev-new",
+  "name": "ki-schulung-slidev",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "dev": "slidev slides-ki-demo.md --open",
+    "dev:original": "slidev --open",
+    "build": "slidev build slides-ki-demo.md --out dist",
+    "build:spa": "slidev build slides-ki-demo.md --out dist-spa",
+    "export": "slidev export slides-ki-demo.md",
+    "export:pdf": "slidev export slides-ki-demo.md --format pdf",
+    "export:png": "slidev export slides-ki-demo.md --format png",
+    "preview": "slidev build slides-ki-demo.md && npx serve dist"
   },
   "dependencies": {
     "@slidev/cli": "^51.6.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
   }
 }
