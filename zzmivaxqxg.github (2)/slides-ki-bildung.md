@@ -1937,6 +1937,450 @@ transition: fade
 </style>
 
 ---
+transition: slide-left
+---
+
+# Prompt Engineering: Der richtige Aufbau
+
+<div class="prompt-showcase">
+  <div class="prompt-intro">
+    <p>Ein guter Prompt besteht aus mehreren wichtigen Komponenten. Lassen Sie uns das Schritt für Schritt analysieren:</p>
+  </div>
+
+```md {1|3-4|6-7|9-10|all}
+**ROLLE**: Du bist ein erfahrener Deutschlehrer für die 8. Klasse.
+
+**KONTEXT**: Ich brauche Hilfe bei der Unterrichtsvorbereitung
+zum Thema "Argumentation".
+
+**AUFGABE**: Erstelle 5 Übungsaufgaben, die das
+Schreiben von Pro- und Contra-Argumenten trainieren.
+
+**FORMAT**: Gib die Aufgaben als nummerierte Liste aus.
+Füge zu jeder Aufgabe einen Schwierigkeitsgrad hinzu.
+```
+
+<div class="prompt-explanation">
+  <div v-click="1" class="explanation-item role">
+    <span class="item-badge">1</span>
+    <h4>Rolle definieren</h4>
+    <p>Gib der KI eine Identität, um kontextbezogene Antworten zu erhalten</p>
+  </div>
+
+  <div v-click="2" class="explanation-item context">
+    <span class="item-badge">2</span>
+    <h4>Kontext liefern</h4>
+    <p>Hintergrundinformationen helfen der KI, den Bedarf zu verstehen</p>
+  </div>
+
+  <div v-click="3" class="explanation-item task">
+    <span class="item-badge">3</span>
+    <h4>Aufgabe formulieren</h4>
+    <p>Klare, spezifische Anweisungen für das gewünschte Ergebnis</p>
+  </div>
+
+  <div v-click="4" class="explanation-item format">
+    <span class="item-badge">4</span>
+    <h4>Format vorgeben</h4>
+    <p>Bestimme die Struktur der Ausgabe für bessere Nutzbarkeit</p>
+  </div>
+</div>
+</div>
+
+<style>
+.prompt-showcase {
+  padding: 0.5rem 1rem;
+}
+
+.prompt-intro p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.prompt-explanation {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.explanation-item {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border-left: 4px solid;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.explanation-item.role { border-left-color: #6366f1; }
+.explanation-item.context { border-left-color: #22c55e; }
+.explanation-item.task { border-left-color: #f59e0b; }
+.explanation-item.format { border-left-color: #ec4899; }
+
+.item-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #e5e7eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.explanation-item h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #1f2937;
+}
+
+.explanation-item p {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+</style>
+
+---
+transition: fade
+---
+
+# Was macht einen schlechten Prompt aus?
+
+<div class="bad-prompt-demo">
+  <div class="bad-prompt-container">
+    <h3>Vermeiden Sie diese Fehler:</h3>
+
+```md {1|2|3|4|all}
+Schreib mir was über KI.
+Mach das gut.
+Ich brauche das schnell.
+Danke!
+```
+
+<div class="strikethrough-demo">
+  <div v-click="1" class="strike-item">
+    <span class="strike-text">~~Schreib mir was über KI.~~</span>
+    <span class="strike-reason">Zu vage - WAS genau über KI?</span>
+  </div>
+
+  <div v-click="2" class="strike-item">
+    <span class="strike-text">~~Mach das gut.~~</span>
+    <span class="strike-reason">Nicht messbar - Was bedeutet "gut"?</span>
+  </div>
+
+  <div v-click="3" class="strike-item">
+    <span class="strike-text">~~Ich brauche das schnell.~~</span>
+    <span class="strike-reason">Irrelevant für KI - Zeitdruck beeinflusst Qualität nicht</span>
+  </div>
+
+  <div v-click="4" class="strike-item">
+    <span class="strike-text">~~Danke!~~</span>
+    <span class="strike-reason">Höflich, aber ohne Mehrwert für die Antwort</span>
+  </div>
+</div>
+  </div>
+
+  <div v-click="5" class="better-alternative">
+    <h4>Besser wäre:</h4>
+
+```md
+Du bist ein Bildungsexperte. Erkläre mir in 3 Absätzen,
+wie KI im Mathematikunterricht der Mittelstufe eingesetzt
+werden kann. Nenne jeweils ein konkretes Beispiel pro Absatz.
+```
+  </div>
+</div>
+
+<style>
+.bad-prompt-demo {
+  padding: 1rem;
+}
+
+.bad-prompt-container h3 {
+  font-size: 1.1rem;
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.strikethrough-demo {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.strike-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fef2f2;
+  border-radius: 0.5rem;
+  border-left: 3px solid #ef4444;
+}
+
+.strike-text {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: #991b1b;
+  text-decoration: line-through;
+  text-decoration-color: #ef4444;
+  text-decoration-thickness: 2px;
+}
+
+.strike-reason {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.better-alternative {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-radius: 1rem;
+  border-left: 4px solid #22c55e;
+}
+
+.better-alternative h4 {
+  font-size: 1rem;
+  color: #166534;
+  margin: 0 0 0.75rem 0;
+}
+</style>
+
+---
+layout: image
+image: https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=1920
+class: text-white
+transition: slide-up
+---
+
+<div class="overlay-content">
+  <div class="overlay-badge">Lernumgebung der Zukunft</div>
+
+  <h1 class="overlay-title">
+    Wo Technologie auf<br>
+    <span class="highlight">Bildung</span> trifft
+  </h1>
+
+  <p class="overlay-subtitle">
+    Die Integration von KI in Schulen erfordert nicht nur technische Infrastruktur,
+    sondern auch ein Umdenken in der pädagogischen Praxis.
+  </p>
+
+  <div class="overlay-stats">
+    <div class="stat">
+      <span class="stat-number">78%</span>
+      <span class="stat-label">der Schüler wünschen sich mehr digitale Lernmethoden</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">2025</span>
+      <span class="stat-label">wird als Wendepunkt für KI in der Bildung gesehen</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.overlay-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.overlay-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+
+.overlay-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+}
+
+.overlay-title .highlight {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.overlay-subtitle {
+  font-size: 1.25rem;
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0 0 2.5rem 0;
+}
+
+.overlay-stats {
+  display: flex;
+  gap: 3rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  max-width: 200px;
+}
+</style>
+
+---
+transition: fade
+---
+
+<div class="gif-background-slide">
+  <!-- Animiertes GIF als Hintergrund -->
+  <div class="gif-bg" style="background-image: url('https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif');"></div>
+
+  <!-- Overlay für bessere Lesbarkeit -->
+  <div class="dark-overlay"></div>
+
+  <div class="gif-slide-content">
+    <div class="content-card">
+      <div class="card-icon">🧠</div>
+      <h2>Neuronale Netze verstehen</h2>
+      <p>
+        KI basiert auf Algorithmen, die dem menschlichen Gehirn nachempfunden sind.
+        Diese "künstlichen Neuronen" lernen aus Daten und verbessern sich kontinuierlich.
+      </p>
+
+      <div class="key-points">
+        <div v-click class="point">
+          <span class="point-icon">🔗</span>
+          <span>Vernetztes Lernen</span>
+        </div>
+        <div v-click class="point">
+          <span class="point-icon">📊</span>
+          <span>Datengetriebene Entscheidungen</span>
+        </div>
+        <div v-click class="point">
+          <span class="point-icon">🔄</span>
+          <span>Kontinuierliche Verbesserung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.gif-background-slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gif-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 100%);
+}
+
+.gif-slide-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.content-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  max-width: 600px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.content-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.content-card p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.key-points {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4338ca;
+}
+
+.point-icon {
+  font-size: 1.1rem;
+}
+</style>
+
+---
 transition: zoom
 ---
 
