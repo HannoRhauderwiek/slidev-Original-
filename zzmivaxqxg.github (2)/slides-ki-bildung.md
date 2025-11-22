@@ -21,6 +21,11 @@ fonts:
   mono: 'Fira Code'
 ---
 
+<style>
+/* Import der globalen Styles */
+@import './styles/main.css';
+</style>
+
 <!-- Slide 1: Impact Opening -->
 <div class="hero-slide">
   <div class="floating-icons">
