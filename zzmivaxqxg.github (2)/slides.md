@@ -434,32 +434,32 @@ transition: slide-up
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Datenschutz-Bedenken</span>
+  <span class="item-text">Datenschutz-Bedenken</span>
 </div>
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Gefahr der <strong>Überabhängigkeit</strong></span>
+  <span class="item-text">Gefahr der <strong>Überabhängigkeit</strong></span>
 </div>
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Soziale Interaktion reduziert?</span>
+  <span class="item-text">Soziale Interaktion reduziert?</span>
 </div>
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Bias in KI-Systemen</span>
+  <span class="item-text">Bias in KI-Systemen</span>
 </div>
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Kosten & Infrastruktur</span>
+  <span class="item-text">Kosten & Infrastruktur</span>
 </div>
 
 <div v-click class="comparison-item negative-item">
   <span class="item-icon">✗</span>
-  <span class="item-text strikethrough">Lehrkräfte-Qualifizierung nötig</span>
+  <span class="item-text">Lehrkräfte-Qualifizierung nötig</span>
 </div>
 
 <style>
@@ -489,11 +489,6 @@ transition: slide-up
   font-size: 1rem;
   line-height: 1.4;
   color: #1D1D1F;
-}
-.negative-item .item-text.strikethrough {
-  text-decoration: line-through;
-  color: #FF3B30;
-  opacity: 0.85;
 }
 </style>
 
@@ -1029,9 +1024,9 @@ transition: slide-left
 <style>
 .flip-cards-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 1rem 3rem;
   perspective: 1000px;
 }
 
@@ -1480,6 +1475,170 @@ transition: slide-up
 </style>
 
 ---
+transition: slide-up
+dragPos:
+  ki_chance: 89,142,180,_
+  ki_risiko: 89,258,180,_
+  datenschutz: 89,374,180,_
+  personalisierung: 89,490,180,_
+---
+
+# Interaktive Sortierübung: KI in der Bildung
+
+<div class="drag-exercise">
+  <div class="exercise-intro">
+    <p>Ordnen Sie die Begriffe den richtigen Kategorien zu, indem Sie sie in die passende Spalte ziehen!</p>
+  </div>
+
+  <div class="drag-columns">
+    <div class="drag-column pro">
+      <h3>Chancen</h3>
+      <div class="drop-zone" id="chancen-zone">
+        <span class="drop-hint">Hierher ziehen</span>
+      </div>
+    </div>
+
+    <div class="drag-column contra">
+      <h3>Risiken</h3>
+      <div class="drop-zone" id="risiken-zone">
+        <span class="drop-hint">Hierher ziehen</span>
+      </div>
+    </div>
+  </div>
+
+  <v-drag pos="ki_chance">
+    <div class="drag-item chance">
+      Personalisiertes Lernen
+    </div>
+  </v-drag>
+
+  <v-drag pos="ki_risiko">
+    <div class="drag-item risiko">
+      Datenschutz-Bedenken
+    </div>
+  </v-drag>
+
+  <v-drag pos="datenschutz">
+    <div class="drag-item chance">
+      Sofortiges Feedback
+    </div>
+  </v-drag>
+
+  <v-drag pos="personalisierung">
+    <div class="drag-item risiko">
+      Überabhängigkeit von Technik
+    </div>
+  </v-drag>
+
+  <div class="exercise-hint">
+    <strong>Tipp:</strong> Doppelklicken Sie auf ein Element und ziehen Sie es in die richtige Spalte. Mit den Pfeiltasten können Sie Elemente feinjustieren.
+  </div>
+</div>
+
+<style>
+.drag-exercise {
+  padding: 1rem 2rem;
+}
+
+.exercise-intro {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-intro p {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.drag-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.drag-column {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  min-height: 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.drag-column.pro {
+  border: 2px dashed #22c55e;
+}
+
+.drag-column.contra {
+  border: 2px dashed #ef4444;
+}
+
+.drag-column h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.drag-column.pro h3 {
+  color: #166534;
+}
+
+.drag-column.contra h3 {
+  color: #991b1b;
+}
+
+.drop-zone {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-hint {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.drag-item {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: move;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.drag-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.drag-item.chance {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border: 1px solid #22c55e;
+  color: #166534;
+}
+
+.drag-item.risiko {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 1px solid #ef4444;
+  color: #991b1b;
+}
+
+.exercise-hint {
+  background: #f3f4f6;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 1rem;
+}
+</style>
+
+---
 layout: center
 class: text-center
 transition: fade
@@ -1689,22 +1848,10 @@ transition: fade
 # GIF-Hintergrund mit Text
 
 <div class="gif-slide">
-  <!--
-    ANLEITUNG: GIF als Hintergrund
-
-    1. Speichern Sie Ihr GIF im Ordner: /public/images/
-    2. Ersetzen Sie die URL in background-image durch: url('/images/IHR-GIF.gif')
-
-    Beispiel für animierten Hintergrund:
-    background-image: url('/images/animation.gif');
-  -->
-
-  <div class="gif-background" style="background-image: url('https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif'); background-size: cover; background-position: center;">
-    <!-- Animiertes GIF als Hintergrund -->
-  </div>
+  <div class="gif-background"></div>
 
   <div class="gif-content">
-    <div class="content-badge">🎬 Animierter Hintergrund</div>
+    <div class="content-badge">KI in der Bildung</div>
     <h2 class="gif-title">
       Visualisierungen<br>
       <span class="highlight-text">erwecken Inhalte zum Leben</span>
@@ -1727,11 +1874,6 @@ transition: fade
       </div>
     </div>
   </div>
-
-  <div class="gif-instructions-overlay">
-    <p>📁 GIF speichern in: <code>/public/images/</code></p>
-    <p>🔗 CSS ändern: <code>background-image: url('/images/dein.gif')</code></p>
-  </div>
 </div>
 
 <style>
@@ -1751,13 +1893,10 @@ transition: fade
   right: 0;
   bottom: 0;
   z-index: 1;
-
-  /*
-   * HIER IHR GIF EINFÜGEN:
-   * background-image: url('/images/ihr-hintergrund.gif');
-   * background-size: cover;
-   * background-position: center;
-   */
+  background-image: url('https://discover.fiverr.com/wp-content/uploads/ezgif.com-video-to-gif-1-4.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Platzhalter-Animation (entfernen wenn GIF eingefügt) */
@@ -1927,8 +2066,6 @@ also allows you to add
 [Learn more](https://sli.dev/guide/animations#click-animation)
 
 </div>
-
----
 
 ---
 transition: slide-up

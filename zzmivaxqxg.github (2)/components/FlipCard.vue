@@ -64,8 +64,8 @@ const toggleFlip = () => {
 .flip-card {
   perspective: 1000px;
   cursor: pointer;
-  height: 280px;
-  min-height: 280px;
+  height: 340px;
+  min-height: 340px;
 }
 
 .flip-card-inner {
@@ -191,13 +191,11 @@ const toggleFlip = () => {
 }
 
 .back-content {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: #374151;
   margin: 0;
   flex: 1;
-  overflow-y: auto;
-  max-height: calc(100% - 80px);
 }
 
 .flip-back-hint {
