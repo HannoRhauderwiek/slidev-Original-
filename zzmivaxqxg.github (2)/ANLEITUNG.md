@@ -495,6 +495,90 @@ Der Export enthält:
 
 ---
 
+## Neue Features
+
+### Schrittweise Animationen
+
+Elemente werden bei jedem Klick einzeln eingeblendet:
+
+```html
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">Vorteil-Text</span>
+</div>
+```
+
+### Quiz mit Modal-Popup
+
+Quiz-Antworten erscheinen jetzt als Modal in der Bildmitte:
+- Klicke auf eine Antwort
+- Modal erscheint mit Erklärung
+- Schließen mit X oder "Weiter"-Button
+
+### Scrollbare Folien
+
+Für Inhalte, die nicht auf eine Folie passen:
+
+```markdown
+---
+layout: ki-scrollable
+title: "Langer Inhalt"
+---
+
+Beliebig viel Inhalt hier...
+```
+
+### Fullscreen iframe-Einbettung
+
+Webseiten ohne UI-Elemente einbetten:
+
+```markdown
+---
+layout: ki-iframe
+url: 'https://example.com'
+fullscreen: true
+---
+```
+
+### Code mit schrittweiser Hervorhebung
+
+Slidev-natives Code-Highlighting mit Klick-Animation:
+
+````markdown
+```python {all|1-3|5-8|all}
+# Zeile 1-3 (Klick 1)
+import openai
+
+# Zeile 5-8 (Klick 2)
+prompt = "Text..."
+```
+````
+
+### 3D-Flip-Karten
+
+Größere Karten mit Scroll-Support für längere Texte:
+
+```html
+<FlipCard
+  front-title="Thema"
+  front-icon="🎯"
+  back-type="pro"
+  back-content="Längerer Text wird scrollbar..."
+/>
+```
+
+### Diagramm-Animationen
+
+Kreisdiagramme füllen sich beim Anzeigen:
+
+```html
+<div v-click class="stat-card animate-on-click">
+  <!-- SVG mit --progress Variable -->
+</div>
+```
+
+---
+
 ## Support & Ressourcen
 
 - **Slidev Dokumentation:** https://sli.dev

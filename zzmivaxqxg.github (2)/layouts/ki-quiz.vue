@@ -38,6 +38,7 @@ const props = defineProps({
 const isLoaded = ref(false)
 const selectedIndex = ref<number | null>(null)
 const hasAnswered = ref(false)
+const showModal = ref(true)
 
 onMounted(() => {
   setTimeout(() => {
@@ -51,11 +52,24 @@ const selectOption = (index: number) => {
 
   selectedIndex.value = index
   hasAnswered.value = true
+  showModal.value = true
 }
 
 const resetQuiz = () => {
   selectedIndex.value = null
   hasAnswered.value = false
+  showModal.value = true
+}
+
+const closeModal = () => {
+  showModal.value = false
+}
+
+const resetQuizAndClose = () => {
+  closeModal()
+  setTimeout(() => {
+    resetQuiz()
+  }, 300)
 }
 
 const selectedOption = computed(() => {
@@ -103,25 +117,32 @@ const isCorrect = computed(() => {
         </button>
       </div>
 
-      <!-- Feedback -->
-      <transition name="feedback">
-        <div v-if="hasAnswered && showExplanation" class="feedback-section" :class="{ correct: isCorrect, incorrect: !isCorrect }">
-          <div class="feedback-header">
-            <span class="feedback-icon">{{ isCorrect ? '🎉' : '💡' }}</span>
-            <span class="feedback-title">{{ isCorrect ? 'Richtig!' : 'Nicht ganz...' }}</span>
-          </div>
-          <p v-if="selectedOption?.explanation" class="feedback-text">
-            {{ selectedOption.explanation }}
-          </p>
-          <button v-if="allowRetry && !isCorrect" class="retry-button" @click="resetQuiz">
-            Erneut versuchen
-          </button>
-        </div>
-      </transition>
     </div>
 
+    <!-- Modal Overlay -->
+    <transition name="modal">
+      <div v-if="hasAnswered && showExplanation && showModal" class="modal-overlay" @click="closeModal">
+        <div class="modal-content" :class="{ correct: isCorrect, incorrect: !isCorrect }" @click.stop>
+          <button class="modal-close" @click="closeModal">✕</button>
+          <div class="modal-icon">{{ isCorrect ? '🎉' : '💡' }}</div>
+          <h3 class="modal-title">{{ isCorrect ? 'Richtig!' : 'Nicht ganz...' }}</h3>
+          <p v-if="selectedOption?.explanation" class="modal-text">
+            {{ selectedOption.explanation }}
+          </p>
+          <div class="modal-actions">
+            <button v-if="allowRetry && !isCorrect" class="modal-btn retry" @click="resetQuizAndClose">
+              Erneut versuchen
+            </button>
+            <button class="modal-btn close" @click="closeModal">
+              {{ isCorrect ? 'Weiter' : 'Schließen' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+
     <!-- Progress indicator -->
-    <div v-if="hasAnswered" class="progress-indicator">
+    <div v-if="hasAnswered && !showModal" class="progress-indicator">
       <div class="progress-dot" :class="{ success: isCorrect, error: !isCorrect }"></div>
     </div>
   </div>
@@ -358,23 +379,151 @@ const isCorrect = computed(() => {
   transform: scale(1.02);
 }
 
-/* Feedback transition */
-.feedback-enter-active {
-  animation: feedbackIn 0.4s ease-out;
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
-.feedback-leave-active {
-  animation: feedbackIn 0.3s ease-out reverse;
+.modal-content {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-@keyframes feedbackIn {
+.modal-content.correct {
+  border-top: 5px solid #34C759;
+}
+
+.modal-content.incorrect {
+  border-top: 5px solid #FF9500;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f3f4f6;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #6b7280;
+}
+
+.modal-close:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.modal-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.modal-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.modal-btn.retry {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.modal-btn.retry:hover {
+  background: #e5e7eb;
+}
+
+.modal-btn.close {
+  background: #0071E3;
+  color: white;
+}
+
+.modal-btn.close:hover {
+  background: #005bb5;
+  transform: translateY(-2px);
+}
+
+/* Modal transition */
+.modal-enter-active {
+  animation: modalIn 0.3s ease-out;
+}
+
+.modal-leave-active {
+  animation: modalIn 0.2s ease-in reverse;
+}
+
+@keyframes modalIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+.modal-enter-active .modal-content {
+  animation: modalContentIn 0.3s ease-out;
+}
+
+.modal-leave-active .modal-content {
+  animation: modalContentIn 0.2s ease-in reverse;
+}
+
+@keyframes modalContentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 

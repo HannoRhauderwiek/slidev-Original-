@@ -2,6 +2,7 @@
   KI-Schulung Layout: Vergleichs-Folie
   =====================================
   2-Spalten Layout für Pro/Contra, Vorher/Nachher, etc.
+  Elemente werden durch v-click schrittweise eingeblendet.
 
   Verwendung:
   ---
@@ -54,9 +55,6 @@ onMounted(() => {
       <!-- Left Column -->
       <div class="column column-left" :class="leftType">
         <div class="column-header">
-          <span class="column-icon" :class="leftType === 'positive' ? 'icon-positive' : 'icon-neutral'">
-            {{ leftType === 'positive' ? '✓' : '○' }}
-          </span>
           <h2 class="column-title">{{ leftTitle }}</h2>
         </div>
         <div class="column-content">
@@ -78,9 +76,6 @@ onMounted(() => {
       <!-- Right Column -->
       <div class="column column-right" :class="rightType">
         <div class="column-header">
-          <span class="column-icon" :class="rightType === 'negative' ? 'icon-negative' : 'icon-neutral'">
-            {{ rightType === 'negative' ? '✗' : '○' }}
-          </span>
           <h2 class="column-title">{{ rightTitle }}</h2>
         </div>
         <div class="column-content">
@@ -185,32 +180,6 @@ onMounted(() => {
   margin-bottom: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #E8E8ED;
-}
-
-.column-icon {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.icon-positive {
-  background: rgba(52, 199, 89, 0.15);
-  color: #34C759;
-}
-
-.icon-negative {
-  background: rgba(255, 59, 48, 0.15);
-  color: #FF3B30;
-}
-
-.icon-neutral {
-  background: rgba(134, 134, 139, 0.15);
-  color: #86868B;
 }
 
 .column-title {

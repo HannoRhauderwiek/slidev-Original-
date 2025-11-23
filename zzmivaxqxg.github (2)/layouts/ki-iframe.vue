@@ -21,6 +21,7 @@ const props = defineProps({
   height: { type: String, default: '75%' },
   showUrl: { type: Boolean, default: true },
   allowFullscreen: { type: Boolean, default: true },
+  fullscreen: { type: Boolean, default: false }, // Fullscreen-Modus ohne UI
 })
 
 const isLoaded = ref(false)
@@ -58,9 +59,9 @@ const containerHeight = computed(() => {
 </script>
 
 <template>
-  <div class="ki-iframe-layout" :class="{ loaded: isLoaded }">
-    <!-- Header -->
-    <header v-if="title || showUrl" class="header">
+  <div class="ki-iframe-layout" :class="{ loaded: isLoaded, fullscreen: fullscreen }">
+    <!-- Header (nur wenn nicht fullscreen) -->
+    <header v-if="!fullscreen && (title || showUrl)" class="header">
       <h1 v-if="title" class="title">{{ title }}</h1>
 
       <!-- URL Bar -->
@@ -83,7 +84,7 @@ const containerHeight = computed(() => {
     </header>
 
     <!-- iframe Container -->
-    <div class="iframe-wrapper" :style="{ height: containerHeight }">
+    <div class="iframe-wrapper" :style="{ height: fullscreen ? '100%' : containerHeight }">
       <!-- Loading State -->
       <div v-if="!iframeLoaded && !hasError && urlInput" class="loading-state">
         <div class="loading-spinner"></div>
@@ -122,8 +123,8 @@ const containerHeight = computed(() => {
       />
     </div>
 
-    <!-- Optional content slot -->
-    <div class="content-slot">
+    <!-- Optional content slot (nur wenn nicht fullscreen) -->
+    <div v-if="!fullscreen" class="content-slot">
       <slot />
     </div>
   </div>
@@ -142,6 +143,17 @@ const containerHeight = computed(() => {
 
 .ki-iframe-layout.loaded {
   opacity: 1;
+}
+
+/* Fullscreen-Modus */
+.ki-iframe-layout.fullscreen {
+  padding: 0;
+  background: transparent;
+}
+
+.ki-iframe-layout.fullscreen .iframe-wrapper {
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* Header */
