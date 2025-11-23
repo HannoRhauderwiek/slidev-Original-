@@ -408,21 +408,102 @@ transition: slide-up
 
 ::left::
 
-- **Personalisiertes Lernen** für jeden Schüler
-- Sofortiges Feedback bei Aufgaben
-- Entlastung bei Routineaufgaben
-- Barrierefreier Zugang für alle
-- 24/7 Lernunterstützung möglich
-- Datenbasierte Lernfortschritte
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text"><strong>Personalisiertes Lernen</strong> für jeden Schüler</span>
+</div>
+
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">Sofortiges Feedback bei Aufgaben</span>
+</div>
+
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">Entlastung bei Routineaufgaben</span>
+</div>
+
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">Barrierefreier Zugang für alle</span>
+</div>
+
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">24/7 Lernunterstützung möglich</span>
+</div>
+
+<div v-click class="comparison-item positive-item">
+  <span class="item-icon">✓</span>
+  <span class="item-text">Datenbasierte Lernfortschritte</span>
+</div>
 
 ::right::
 
-- Datenschutz-Bedenken
-- Gefahr der **Überabhängigkeit**
-- Soziale Interaktion reduziert?
-- Bias in KI-Systemen
-- Kosten & Infrastruktur
-- Lehrkräfte-Qualifizierung nötig
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Datenschutz-Bedenken</span>
+</div>
+
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Gefahr der <strong>Überabhängigkeit</strong></span>
+</div>
+
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Soziale Interaktion reduziert?</span>
+</div>
+
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Bias in KI-Systemen</span>
+</div>
+
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Kosten & Infrastruktur</span>
+</div>
+
+<div v-click class="comparison-item negative-item">
+  <span class="item-icon">✗</span>
+  <span class="item-text strikethrough">Lehrkräfte-Qualifizierung nötig</span>
+</div>
+
+<style>
+.comparison-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.comparison-item:last-child {
+  border-bottom: none;
+}
+.item-icon {
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 1.5rem;
+}
+.positive-item .item-icon {
+  color: #34C759;
+}
+.negative-item .item-icon {
+  color: #FF3B30;
+}
+.item-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #1D1D1F;
+}
+.negative-item .item-text.strikethrough {
+  text-decoration: line-through;
+  color: #FF3B30;
+  opacity: 0.85;
+}
+</style>
 
 ---
 transition: slide-left
@@ -431,7 +512,7 @@ transition: slide-left
 # Statistiken zur KI-Nutzung in deutschen Schulen
 
 <div class="stats-grid">
-  <div v-click class="stat-card">
+  <div v-click class="stat-card animate-on-click">
     <div class="stat-visual">
       <svg viewBox="0 0 100 100" class="progress-ring">
         <circle cx="50" cy="50" r="45" class="progress-bg"/>
@@ -445,7 +526,7 @@ transition: slide-left
     <p>haben bereits von KI-Tools gehört oder sie ausprobiert</p>
   </div>
 
-  <div v-click class="stat-card">
+  <div v-click class="stat-card animate-on-click">
     <div class="stat-visual">
       <svg viewBox="0 0 100 100" class="progress-ring">
         <circle cx="50" cy="50" r="45" class="progress-bg"/>
@@ -459,7 +540,7 @@ transition: slide-left
     <p>haben offizielle Richtlinien zum KI-Einsatz</p>
   </div>
 
-  <div v-click class="stat-card">
+  <div v-click class="stat-card animate-on-click">
     <div class="stat-visual">
       <svg viewBox="0 0 100 100" class="progress-ring">
         <circle cx="50" cy="50" r="45" class="progress-bg"/>
@@ -473,7 +554,7 @@ transition: slide-left
     <p>nutzen ChatGPT für Hausaufgaben (privat)</p>
   </div>
 
-  <div v-click class="stat-card accent">
+  <div v-click class="stat-card accent animate-on-click">
     <div class="stat-visual">
       <svg viewBox="0 0 100 100" class="progress-ring">
         <circle cx="50" cy="50" r="45" class="progress-bg"/>
@@ -489,7 +570,7 @@ transition: slide-left
 </div>
 
 <div v-click class="stats-source">
-  📊 Quellen: Bitkom Studie 2024, Deutsches Schulbarometer, GEW Umfrage
+  Quellen: Bitkom Studie 2024, Deutsches Schulbarometer, GEW Umfrage
 </div>
 
 <style>
@@ -537,12 +618,20 @@ transition: slide-left
   stroke-width: 8;
 }
 
+/* Animation startet erst wenn das Element sichtbar wird */
 .progress-fill {
   fill: none;
   stroke: #6366f1;
   stroke-width: 8;
   stroke-linecap: round;
   stroke-dasharray: 283;
+  stroke-dashoffset: 283; /* Start bei 0% */
+  transition: none;
+}
+
+/* Animation wenn v-click aktiv ist */
+.animate-on-click.slidev-vclick-current .progress-fill,
+.animate-on-click.slidev-vclick-prior .progress-fill {
   stroke-dashoffset: calc(283 - (283 * var(--progress)) / 100);
   transition: stroke-dashoffset 1.5s ease-out;
 }
@@ -606,14 +695,14 @@ transition: fade
 ---
 
 ---
+layout: ki-scrollable
 transition: slide-up
+title: Praktische KI-Anwendungen im Schulalltag
 ---
-
-# Praktische KI-Anwendungen im Schulalltag
 
 <div class="apps-showcase">
   <div class="app-category">
-    <h3>📝 Unterrichtsvorbereitung</h3>
+    <h3>Unterrichtsvorbereitung</h3>
     <div class="app-cards">
       <div v-click class="app-card">
         <span class="app-icon">🎯</span>
@@ -634,7 +723,7 @@ transition: slide-up
   </div>
 
   <div class="app-category">
-    <h3>👥 Im Unterricht</h3>
+    <h3>Im Unterricht</h3>
     <div class="app-cards">
       <div v-click class="app-card highlight">
         <span class="app-icon">🤖</span>
@@ -653,43 +742,42 @@ transition: slide-up
       </div>
     </div>
   </div>
-</div>
 
-<div v-click class="reflection-box">
-  <span class="reflection-icon">💭</span>
-  <strong>Reflexionsfrage:</strong> Welche dieser Anwendungen könnte in EURER Schule den größten Mehrwert bringen?
+  <div v-click class="reflection-box">
+    <span class="reflection-icon">💭</span>
+    <strong>Reflexionsfrage:</strong> Welche dieser Anwendungen könnte in EURER Schule den größten Mehrwert bringen?
+  </div>
 </div>
 
 <style>
 .apps-showcase {
   display: grid;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 1.5rem;
 }
 
 .app-category h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
   color: #1f2937;
 }
 
 .app-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .app-card {
   background: white;
-  border-radius: 1rem;
-  padding: 1.25rem;
+  border-radius: 0.75rem;
+  padding: 1rem;
   border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
 
 .app-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-color: #6366f1;
 }
 
@@ -699,23 +787,23 @@ transition: slide-up
 }
 
 .app-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .app-card h4 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.25rem 0;
   color: #1f2937;
 }
 
 .app-card p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #6b7280;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .reflection-box {
@@ -724,28 +812,23 @@ transition: slide-up
   gap: 0.75rem;
   background: linear-gradient(135deg, #fef3c7, #fef9c3);
   border: 1px solid #fbbf24;
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
 }
 
 .reflection-icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 </style>
 
 ---
+layout: ki-scrollable
 transition: fade
+title: "Szenarien: KI-Implementierung in Schulen"
 ---
 
-# Szenarien: KI-Implementierung in Schulen
-
 <ScenarioSelector />
-
-<style>
-/* Styles werden in der Komponente definiert */
-</style>
 
 ---
 layout: ki-quiz
@@ -904,54 +987,10 @@ transition: slide-up
 
 ---
 layout: ki-iframe
-title: 'Datenschutz-Check: Analysieren Sie Ihre Schulplattformen'
 url: 'https://datenschutzbestimmungs-check.vercel.app/'
-height: '68%'
-showUrl: true
+fullscreen: true
 transition: fade
 ---
-
-<div class="iframe-context">
-  <div class="context-badge">🔍 Interaktives Tool</div>
-  <p>Dieses Analysetool hilft Ihnen, Datenschutzbestimmungen von Bildungs-Tools zu bewerten.</p>
-  <div class="discussion-prompt">
-    <strong>Diskussionsimpuls:</strong> Wie transparent sind die Datenschutzbestimmungen eurer Schulplattformen?
-  </div>
-</div>
-
-<style>
-.iframe-context {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 0.75rem;
-}
-
-.context-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
-  padding: 0.375rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.iframe-context p {
-  font-size: 0.9rem;
-  color: #4b5563;
-  margin: 0 0 0.75rem 0;
-}
-
-.discussion-prompt {
-  background: linear-gradient(135deg, #fef3c7, #fef9c3);
-  border-left: 3px solid #f59e0b;
-  padding: 0.75rem 1rem;
-  border-radius: 0 0.5rem 0.5rem 0;
-  font-size: 0.875rem;
-}
-</style>
 
 ---
 transition: slide-left
@@ -1585,37 +1624,15 @@ title: Eigenes Bild einbinden
 
 <div class="image-showcase">
   <div class="image-container">
-    <!--
-      ANLEITUNG: So fügen Sie Ihr eigenes Bild ein:
-
-      1. Speichern Sie Ihr Bild im Ordner: /public/images/
-      2. Ersetzen Sie den Pfad unten durch: /images/IHR-BILDNAME.jpg
-
-      Beispiel: Wenn Sie "ki-schule.png" speichern:
-      <img src="/images/ki-schule.png" alt="KI in der Schule" class="custom-image" />
-    -->
-    <div class="placeholder-image">
-      <span class="placeholder-icon">🖼️</span>
-      <p class="placeholder-text">Ihr Bild hier</p>
-      <p class="placeholder-hint">Speichern Sie Ihr Bild in:<br><code>/public/images/</code></p>
-    </div>
-
-    <!-- Kommentieren Sie das Placeholder-div aus und fügen Sie stattdessen ein: -->
-    <!-- <img src="/images/ihr-bild.jpg" alt="Bildbeschreibung" class="custom-image" /> -->
+    <!-- Testbild: KI im Klassenzimmer (Unsplash) -->
+    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80" alt="Schüler mit Laptops im Klassenzimmer" class="custom-image" />
   </div>
 
-  <div class="image-instructions">
-    <h3>📁 So fügen Sie Ihr Bild ein:</h3>
-    <ol>
-      <li>Speichern Sie Ihr Bild im Ordner <code>public/images/</code></li>
-      <li>Unterstützte Formate: <strong>JPG, PNG, GIF, SVG, WebP</strong></li>
-      <li>Ersetzen Sie den Platzhalter durch:<br>
-        <code>&lt;img src="/images/IHR-BILD.jpg" /&gt;</code>
-      </li>
-    </ol>
-
+  <div class="image-caption">
+    <h3>KI-gestütztes Lernen im modernen Klassenzimmer</h3>
+    <p>Schüler arbeiten individuell mit adaptiven Lernplattformen, während die Lehrkraft den Überblick behält.</p>
     <div class="tip-box">
-      💡 <strong>Tipp:</strong> Optimieren Sie Bilder vor dem Upload (max. 1-2 MB)
+      Ersetzen Sie dieses Bild durch Ihr eigenes: <code>public/images/</code>
     </div>
   </div>
 </div>
@@ -1623,10 +1640,10 @@ title: Eigenes Bild einbinden
 <style>
 .image-showcase {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   padding: 1rem;
-  height: calc(100% - 100px);
+  height: calc(100% - 80px);
 }
 
 .image-container {
@@ -1635,87 +1652,50 @@ title: Eigenes Bild einbinden
   justify-content: center;
   background: #f9fafb;
   border-radius: 1rem;
-  border: 2px dashed #d1d5db;
   overflow: hidden;
-}
-
-.placeholder-image {
-  text-align: center;
-  padding: 3rem;
-}
-
-.placeholder-icon {
-  font-size: 5rem;
-  display: block;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
-.placeholder-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #6b7280;
-  margin: 0 0 0.5rem 0;
-}
-
-.placeholder-hint {
-  font-size: 0.9rem;
-  color: #9ca3af;
-  margin: 0;
-}
-
-.placeholder-hint code {
-  background: #e5e7eb;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
+  max-height: 60vh;
 }
 
 .custom-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
 }
 
-.image-instructions {
-  padding: 1.5rem;
+.image-caption {
+  padding: 1rem 1.5rem;
   background: white;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   border: 1px solid #e5e7eb;
+  text-align: center;
 }
 
-.image-instructions h3 {
+.image-caption h3 {
   font-size: 1.1rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   color: #1f2937;
 }
 
-.image-instructions ol {
-  padding-left: 1.25rem;
-  margin: 0 0 1.5rem 0;
-}
-
-.image-instructions ol li {
-  margin-bottom: 0.75rem;
+.image-caption p {
   font-size: 0.9rem;
-  color: #4b5563;
-}
-
-.image-instructions code {
-  background: #f3f4f6;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
-  color: #6366f1;
+  color: #6b7280;
+  margin: 0 0 0.75rem 0;
 }
 
 .tip-box {
   background: linear-gradient(135deg, #fef3c7, #fef9c3);
   border-left: 3px solid #f59e0b;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0 0.5rem 0.5rem 0;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.tip-box code {
+  background: rgba(0,0,0,0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
 }
 </style>
 
@@ -1736,13 +1716,8 @@ transition: fade
     background-image: url('/images/animation.gif');
   -->
 
-  <div class="gif-background">
-    <!-- Platzhalter-Animation (wird durch Ihr GIF ersetzt) -->
-    <div class="animated-placeholder">
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-    </div>
+  <div class="gif-background" style="background-image: url('https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif'); background-size: cover; background-position: center;">
+    <!-- Animiertes GIF als Hintergrund -->
   </div>
 
   <div class="gif-content">
@@ -1937,12 +1912,69 @@ transition: fade
 </style>
 
 ---
+transition: slide-up
+---
+
+# Code-Beispiel: KI-Prompt-Engineering
+
+```python {all|1-3|5-8|10-15|all}
+# Schritt 1: Bibliothek importieren
+import openai
+openai.api_key = "DEIN_API_KEY"
+
+# Schritt 2: Prompt definieren
+prompt = """
+Erstelle eine Zusammenfassung des folgenden Textes
+für Schüler der 8. Klasse.
+"""
+
+# Schritt 3: API-Anfrage senden
+response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": prompt}],
+    temperature=0.7  # Kreativität einstellen
+)
+
+# Schritt 4: Antwort ausgeben
+print(response.choices[0].message.content)
+```
+
+<div v-click class="code-explanation">
+  <strong>Schrittweise Erklärung:</strong>
+  <ul>
+    <li><strong>Zeile 1-3:</strong> API-Verbindung einrichten</li>
+    <li><strong>Zeile 5-8:</strong> Klaren, strukturierten Prompt erstellen</li>
+    <li><strong>Zeile 10-15:</strong> Anfrage mit Parametern senden</li>
+    <li><strong>temperature:</strong> 0 = präzise, 1 = kreativ</li>
+  </ul>
+</div>
+
+<style>
+.code-explanation {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  border-radius: 0.75rem;
+  border-left: 4px solid #6366f1;
+  font-size: 0.9rem;
+}
+.code-explanation ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+}
+.code-explanation li {
+  margin: 0.25rem 0;
+  color: #4b5563;
+}
+</style>
+
+---
 transition: zoom
 ---
 
 # Kreis-Animation
 
-<div class="circles-animation-container">
+<div class="circles-animation-container" id="circlesContainer">
   <div class="animation-stage">
     <!-- Die Kreise, die sich zusammenbewegen -->
     <div class="circle circle-1"></div>
@@ -1959,8 +1991,17 @@ transition: zoom
   </div>
 
   <div class="animation-controls">
-    <button class="replay-btn" onclick="this.closest('.circles-animation-container').classList.remove('animate'); void this.offsetWidth; this.closest('.circles-animation-container').classList.add('animate');">
-      🔄 Animation wiederholen
+    <button class="replay-btn" onclick="
+      const container = document.getElementById('circlesContainer');
+      const stage = container.querySelector('.animation-stage');
+      stage.style.display = 'none';
+      stage.offsetHeight; // Trigger reflow
+      stage.style.display = '';
+      // Klonen und ersetzen für komplettes Reset
+      const newStage = stage.cloneNode(true);
+      stage.parentNode.replaceChild(newStage, stage);
+    ">
+      Animation wiederholen
     </button>
   </div>
 
@@ -1982,10 +2023,7 @@ transition: zoom
   padding: 2rem;
 }
 
-.circles-animation-container.animate .circle,
-.circles-animation-container.animate .final-circle {
-  animation-play-state: running;
-}
+/* Animation läuft standardmäßig */
 
 .animation-stage {
   position: relative;
