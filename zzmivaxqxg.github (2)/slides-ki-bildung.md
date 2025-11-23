@@ -41,17 +41,14 @@ fonts:
       <span class="pulse-dot"></span>
       Weiterbildung 2025
     </div>
-
     <h1 class="hero-title">
       <span class="gradient-text">Künstliche Intelligenz</span>
       <br>
       <span class="subtitle-text">in der Schulbildung</span>
     </h1>
-
     <p class="hero-description">
       Wie KI den Unterricht transformiert – und was das für Schulen bedeutet
     </p>
-
     <div class="hero-stats">
       <div class="stat-item">
         <AnimatedCounter :target="73" suffix="%" />
@@ -279,7 +276,6 @@ transition: fade-out
         <p>Wie KI den Unterricht bereichern kann</p>
       </div>
     </div>
-
     <div v-click class="agenda-item">
       <div class="agenda-number">02</div>
       <div class="agenda-content">
@@ -287,7 +283,6 @@ transition: fade-out
         <p>Kritische Betrachtung der Technologie</p>
       </div>
     </div>
-
     <div v-click class="agenda-item">
       <div class="agenda-number">03</div>
       <div class="agenda-content">
@@ -295,7 +290,6 @@ transition: fade-out
         <p>DSGVO-konforme Implementierung</p>
       </div>
     </div>
-
     <div v-click class="agenda-item">
       <div class="agenda-number">04</div>
       <div class="agenda-content">
@@ -303,7 +297,6 @@ transition: fade-out
         <p>Konkrete Tools und Methoden</p>
       </div>
     </div>
-
     <div v-click class="agenda-item">
       <div class="agenda-number">05</div>
       <div class="agenda-content">
@@ -311,7 +304,6 @@ transition: fade-out
         <p>Wie sieht Schule 2030 aus?</p>
       </div>
     </div>
-
     <div v-click class="agenda-item highlight">
       <div class="agenda-number">06</div>
       <div class="agenda-content">
@@ -867,7 +859,6 @@ transition: slide-up
         <li>Biometrische Daten (bei Proctoring)</li>
       </ul>
     </div>
-
     <div v-click class="privacy-card info">
       <span class="card-icon">📋</span>
       <h3>DSGVO-Anforderungen</h3>
@@ -878,7 +869,6 @@ transition: slide-up
         <li>Recht auf Löschung</li>
       </ul>
     </div>
-
     <div v-click class="privacy-card success">
       <span class="card-icon">✅</span>
       <h3>Best Practices</h3>
@@ -1081,7 +1071,7 @@ transition: slide-up
 
 # Zeitstrahl: KI in der Bildung
 
-```mermaid {scale: 0.75, theme: 'neutral'}
+```mermaid {scale: 0.5, theme: 'neutral'}
 timeline
     title Evolution von KI im Bildungswesen
     section Vergangenheit
@@ -1177,7 +1167,6 @@ transition: fade
         </div>
       </div>
     </div>
-
     <div v-click class="case-phase">
       <div class="phase-number">2</div>
       <div class="phase-content">
@@ -1192,7 +1181,6 @@ transition: fade
         </div>
       </div>
     </div>
-
     <div v-click class="case-phase">
       <div class="phase-number">3</div>
       <div class="phase-content">
@@ -1371,7 +1359,6 @@ transition: slide-up
         <div class="rec-timeframe">⏱️ Sofort umsetzbar</div>
       </div>
     </div>
-
     <div v-click class="rec-card">
       <div class="rec-step">2</div>
       <div class="rec-content">
@@ -1380,7 +1367,6 @@ transition: slide-up
         <div class="rec-timeframe">⏱️ 2-4 Wochen</div>
       </div>
     </div>
-
     <div v-click class="rec-card">
       <div class="rec-step">3</div>
       <div class="rec-content">
@@ -1389,7 +1375,6 @@ transition: slide-up
         <div class="rec-timeframe">⏱️ 4-6 Wochen</div>
       </div>
     </div>
-
     <div v-click class="rec-card">
       <div class="rec-step">4</div>
       <div class="rec-content">
@@ -1398,7 +1383,6 @@ transition: slide-up
         <div class="rec-timeframe">⏱️ 1 Schulhalbjahr</div>
       </div>
     </div>
-
     <div v-click class="rec-card">
       <div class="rec-step">5</div>
       <div class="rec-content">
@@ -1407,7 +1391,6 @@ transition: slide-up
         <div class="rec-timeframe">⏱️ Kontinuierlich</div>
       </div>
     </div>
-
     <div v-click class="rec-card highlight">
       <div class="rec-step">6</div>
       <div class="rec-content">
@@ -1722,16 +1705,13 @@ transition: fade
 
   <div class="gif-content">
     <div class="content-badge">🎬 Animierter Hintergrund</div>
-
     <h2 class="gif-title">
       Visualisierungen<br>
       <span class="highlight-text">erwecken Inhalte zum Leben</span>
     </h2>
-
     <p class="gif-description">
       Animierte GIFs können komplexe Prozesse veranschaulichen und die Aufmerksamkeit auf wichtige Konzepte lenken.
     </p>
-
     <div class="gif-features">
       <div class="feature-item">
         <span class="feature-icon">🔄</span>
@@ -1912,6 +1892,45 @@ transition: fade
 </style>
 
 ---
+
+# Clicks Animations
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+</div>
+
+---
+
+---
 transition: slide-up
 ---
 
@@ -1985,7 +2004,6 @@ transition: zoom
     <div class="circle circle-6"></div>
     <div class="circle circle-7"></div>
     <div class="circle circle-8"></div>
-
     <!-- Der finale schwarze Kreis -->
     <div class="final-circle"></div>
   </div>
