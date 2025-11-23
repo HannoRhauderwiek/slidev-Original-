@@ -308,15 +308,15 @@ pre {
   text-underline-offset: 3px;
 }
 
-/* Negative/Zu Vermeiden */
-.negative,
+/* Negative/Zu Vermeiden - nur für Text-Elemente, nicht für Layout-Container */
+.negative:not(.column),
 .avoid {
   color: var(--color-accent-red);
   text-decoration: line-through;
   opacity: 0.7;
 }
 
-.negative::before,
+.negative:not(.column)::before,
 .avoid::before {
   content: "✗ ";
   font-weight: 700;

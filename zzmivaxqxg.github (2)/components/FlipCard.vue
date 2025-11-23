@@ -64,8 +64,8 @@ const toggleFlip = () => {
 .flip-card {
   perspective: 1000px;
   cursor: pointer;
-  height: 340px;
-  min-height: 340px;
+  height: 280px;
+  min-height: 280px;
 }
 
 .flip-card-inner {

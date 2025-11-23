@@ -1007,37 +1007,31 @@ transition: slide-left
     back-type="pro"
     back-content="Routineaufgaben wie Korrektur, Feedback und Verwaltung können automatisiert werden. Mehr Zeit für Pädagogik."
   />
-
-  <FlipCard
-    v-click
-    front-title="Abhängigkeit"
-    front-icon="⚠️"
-    back-type="contra"
-    back-content="Risiko der Technologie-Abhängigkeit. Was passiert bei Systemausfällen? Kritisches Denken gefährdet?"
-  />
 </div>
 
 <div v-click class="flip-hint">
-  💡 <strong>Tipp:</strong> Klicken Sie auf die Karten, um sie zu drehen!
+  Klicken Sie auf die Karten, um sie zu drehen!
 </div>
 
 <style>
 .flip-cards-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  padding: 1rem 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0.5rem 2rem;
   perspective: 1000px;
+  height: calc(100% - 120px);
+  align-items: center;
 }
 
 .flip-hint {
   text-align: center;
-  margin-top: 1rem;
-  padding: 0.75rem;
+  padding: 0.5rem 1rem;
   background: #f3f4f6;
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: #6b7280;
+  margin-top: 0.5rem;
 }
 </style>
 
@@ -1946,10 +1940,10 @@ transition: fade
   text-align: center;
   max-width: 700px;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
   border-radius: 1.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
 }
 
 .content-badge {
@@ -1968,7 +1962,7 @@ transition: fade
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 1rem 0;
-  color: #1f2937;
+  color: white;
 }
 
 .highlight-text {
@@ -1980,7 +1974,7 @@ transition: fade
 
 .gif-description {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0 0 2rem 0;
   line-height: 1.6;
 }
@@ -1996,7 +1990,7 @@ transition: fade
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .feature-icon {

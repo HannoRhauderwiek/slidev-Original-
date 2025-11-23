@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, onUnmounted } from 'vue'
 
 const props = defineProps({
   target: {
@@ -8,7 +8,7 @@ const props = defineProps({
   },
   duration: {
     type: Number,
-    default: 2000,
+    default: 1500,
   },
   suffix: {
     type: String,
@@ -26,19 +26,21 @@ const props = defineProps({
 
 const currentValue = ref(0)
 const displayValue = ref('0')
-const isVisible = ref(false)
-const isAnimating = ref(false)
+const hasAnimated = ref(false)
 const counterRef = ref<HTMLElement | null>(null)
+let mutationObserver: MutationObserver | null = null
 
 const easeOutQuart = (t: number): number => {
   return 1 - Math.pow(1 - t, 4)
 }
 
 const animateValue = () => {
+  if (hasAnimated.value) return
+  hasAnimated.value = true
+
   const startTime = performance.now()
   const startValue = 0
   const endValue = props.target
-  isAnimating.value = true
 
   const animate = (currentTime: number) => {
     const elapsed = currentTime - startTime
@@ -55,45 +57,85 @@ const animateValue = () => {
 
     if (progress < 1) {
       requestAnimationFrame(animate)
-    } else {
-      isAnimating.value = false
     }
   }
 
   requestAnimationFrame(animate)
 }
 
-onMounted(() => {
-  // Start animation when component becomes visible
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !isVisible.value) {
-        isVisible.value = true
-        animateValue()
-      }
-    })
-  }, { threshold: 0.1 })
+const checkVClickState = () => {
+  if (!counterRef.value || hasAnimated.value) return
 
-  if (counterRef.value) observer.observe(counterRef.value)
-
-  // Fallback: start animation after short delay if intersection observer doesn't trigger
-  setTimeout(() => {
-    if (!isVisible.value) {
-      isVisible.value = true
+  // Suche nach dem nächsten Eltern-Element mit v-click Klassen
+  let element: HTMLElement | null = counterRef.value
+  while (element) {
+    if (element.classList.contains('slidev-vclick-current') ||
+        element.classList.contains('slidev-vclick-prior')) {
       animateValue()
+      return true
     }
-  }, 500)
+    element = element.parentElement
+  }
+  return false
+}
+
+onMounted(() => {
+  if (!counterRef.value) return
+
+  // Prüfe sofort, ob das Element bereits sichtbar ist (kein v-click)
+  let hasVClick = false
+  let element: HTMLElement | null = counterRef.value
+  while (element) {
+    if (element.classList.contains('slidev-vclick-target') ||
+        element.hasAttribute('v-click')) {
+      hasVClick = true
+      break
+    }
+    element = element.parentElement
+  }
+
+  // Wenn kein v-click vorhanden ist, starte Animation sofort bei Sichtbarkeit
+  if (!hasVClick) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated.value) {
+          animateValue()
+        }
+      })
+    }, { threshold: 0.1 })
+
+    observer.observe(counterRef.value)
+    return
+  }
+
+  // Bei v-click: verwende MutationObserver um auf Klassenänderungen zu reagieren
+  mutationObserver = new MutationObserver(() => {
+    checkVClickState()
+  })
+
+  // Beobachte die gesamte Eltern-Kette
+  element = counterRef.value
+  while (element && element !== document.body) {
+    mutationObserver.observe(element, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    element = element.parentElement
+  }
+
+  // Prüfe einmal initial
+  checkVClickState()
 })
 
-watch(() => props.target, () => {
-  if (isVisible.value) {
-    animateValue()
+onUnmounted(() => {
+  if (mutationObserver) {
+    mutationObserver.disconnect()
   }
 })
 </script>
 
 <template>
-  <span ref="counterRef" class="animated-counter" :class="{ 'is-animating': isAnimating, 'is-visible': isVisible }">
+  <span ref="counterRef" class="animated-counter" :class="{ 'has-animated': hasAnimated }">
     <span class="counter-inner">
       {{ prefix }}{{ displayValue }}{{ suffix }}
     </span>
@@ -112,25 +154,11 @@ watch(() => props.target, () => {
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
-  transition: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out;
 }
 
-.animated-counter.is-visible .counter-inner {
+.animated-counter.has-animated .counter-inner {
   transform: translateY(0);
   opacity: 1;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out;
-}
-
-.animated-counter.is-animating .counter-inner {
-  animation: slideUpPulse 0.15s ease-out;
-}
-
-@keyframes slideUpPulse {
-  0% {
-    transform: translateY(2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 </style>
